@@ -1,9 +1,9 @@
 export const productos = [
-  { nombre: "Arroz", precio: 5000, cantidad: 12 },
-  { nombre: "Carne", precio: 26000, cantidad: 2 },
-  { nombre: "Pan", precio: 23000, cantidad: 2 },
-  { nombre: "Queso", precio: 4300, cantidad: 10 },
-  { nombre: "Leche", precio: 17000, cantidad: 2 },
-  { nombre: "Café", precio: 11900, cantidad: 3 },
-  { nombre: "Aceite", precio: 15000, cantidad: 0 }
+  { id: 1, nombre: "Arroz 500 g", categoria: "granos", precio: 2800, cantidad: 20 },
+  { id: 2, nombre: "Fríjol 500 g", categoria: "granos", precio: 5200, cantidad: 8 },
+  { id: 3, nombre: "Leche 1 L", categoria: "lacteos", precio: 4200, cantidad: 12 },
+  { id: 4, nombre: "Queso campesino 250 g", categoria: "lacteos", precio: 7800, cantidad: 4 },
+  { id: 5, nombre: "Pan tajado", categoria: "panaderia", precio: 6500, cantidad: 5 },
+  { id: 6, nombre: "Jabón de loza", categoria: "aseo", precio: 3500, cantidad: 0 },
+  { id: 7, nombre: "Gaseosa 1.5 L", categoria: "bebidas", precio: 5900, cantidad: 10 }
 ];

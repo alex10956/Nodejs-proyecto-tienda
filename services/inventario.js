@@ -1,31 +1,43 @@
 import { productos } from "../data/productos.js";
 
-const IVA = 0.19;
-
-export const listarProductos = () => {
-  return productos;
+export const buscarPorId = (id) => {
+  return productos.find((producto) => producto.id === Number(id)) || null;
 };
 
-export const contarProductosAgotados = () => {
-  return productos.filter((producto) => producto.cantidad === 0).length;
+export const listarAgotados = () => {
+  return productos.filter((producto) => producto.cantidad === 0);
 };
 
-export const calcularTotalInventario = () => {
-  let total = 0;
+export const valorInventario = () => {
+  return productos.reduce((total, producto) => total + producto.precio * producto.cantidad, 0);
+};
 
-  for (const producto of productos) {
-    total += producto.precio * producto.cantidad;
+export const buscarPorNombre = (texto) => {
+  const filtro = String(texto).trim().toLowerCase();
+
+  if (!filtro) {
+    return [];
   }
 
-  return total;
+  return productos.filter((producto) => producto.nombre.toLowerCase().includes(filtro));
 };
 
-export const calcularIva = (valor) => {
-  return valor * IVA;
+export const vender = (id, cantidad) => {
+  const producto = buscarPorId(id);
+
+  if (!producto) {
+    return "ERROR: no existe el producto con ese id";
+  }
+
+  if (cantidad <= 0) {
+    return "ERROR: la cantidad debe ser mayor que cero";
+  }
+
+  if (cantidad > producto.cantidad) {
+    return `ERROR: solo quedan ${producto.cantidad} unidades de ${producto.nombre}`;
+  }
+
+  producto.cantidad -= cantidad;
+  return `Se vendieron ${cantidad} unidades de ${producto.nombre}. Quedan ${producto.cantidad}.`;
 };
 
-export const calcularTotalConIva = () => {
-  const subtotal = calcularTotalInventario();
-  const iva = calcularIva(subtotal);
-  return subtotal + iva;
-};

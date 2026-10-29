@@ -6,6 +6,9 @@ export const formatearPrecio = (valor) => {
   return `$ ${valor.toLocaleString("es-CO")}`;
 };
 
+export const calcularIVA = (valor) => valor * 0.19;
+export const totalConIVA = (valor) => valor + calcularIVA(valor);
+
 export const formatearprecio2 = (valor) => {
   return `${valor}`;
 };
